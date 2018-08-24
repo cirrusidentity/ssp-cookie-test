@@ -46,3 +46,10 @@ If you need on the container you can do.
 Apache and ssp are set to log to dockers stdout. View the logs with
 
     docker logs -f  cookie-test
+
+# View sessions
+
+    # list
+    docker exec -it cookie-test find /tmp -name 'sess*'
+    # delete
+    docker exec -it cookie-test find /tmp -name 'sess*' -delete
