@@ -6,7 +6,7 @@ https://groups.google.com/forum/#!topic/simplesamlphp/Zhpc78whHNU
 
 Run an SSP docker instance and add in the test-cookie.php. This assumes you can listen on port 443.
 
-    docker run --name cookie-test -d -p 443:443 -v $PWD/www/cookie-test.php:/var/simplesamlphp/www/cookie-test.php cirrusid/ssp-base
+    docker run -e SSP_LOG_LEVEL=7 --name cookie-test -d -p 443:443 -v $PWD/www/cookie-test.php:/var/simplesamlphp/www/cookie-test.php cirrusid/ssp-base
 
 Then user `curl` to get the headers
 
@@ -40,3 +40,9 @@ It has minimal configuration changes from a clean install. You can view the chan
 If you need on the container you can do.
 
      docker exec -it cookie-test bash
+
+# View logs
+
+Apache and ssp are set to log to dockers stdout. View the logs with
+
+    docker logs -f  cookie-test
